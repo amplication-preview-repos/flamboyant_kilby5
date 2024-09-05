@@ -1,0 +1,52 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model BikesetuYard {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt DateTime @updatedAt
+}
+
+model FranchiseeStore {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt DateTime @updatedAt
+}
+
+model Ownership {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt DateTime @updatedAt
+}
+
+model Customer {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt DateTime @updatedAt
+}
+
+model Tracking {
+  createdAt      DateTime                    @default(now())
+  customerId     String?
+  deliveryStatus EnumTrackingDeliveryStatus?
+  id             String                      @id @default(auto()) @map("_id") @db.ObjectId
+  review         String?
+  trackingId     String?
+  updatedAt      DateTime                    @updatedAt
+}
+
+model Manufacturer {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt DateTime @updatedAt
+}
+
+enum EnumTrackingDeliveryStatus {
+  Option1
+}
